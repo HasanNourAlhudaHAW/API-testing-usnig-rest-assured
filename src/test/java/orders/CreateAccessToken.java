@@ -1,11 +1,6 @@
 package orders;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
 import model.ClientInfo;
 import org.testng.annotations.*;
 import static org.hamcrest.Matchers.equalTo;
@@ -14,7 +9,7 @@ import static io.restassured.RestAssured.*;
 
 import setUp.SetUp;
 
-public class CreateAccessTokenRest8 {
+public class CreateAccessToken {
 
     SetUp setUp = new SetUp();
     ClientInfo clientInfo = new ClientInfo();
@@ -32,7 +27,7 @@ public class CreateAccessTokenRest8 {
         String addClientInfo = clientInfo.setClientInfo("AnyName", "anyName@edu.de");
 
          given().
-                 spec(SetUp.getRequestSpec()).
+                 spec(SetUp.getRequestSpecWithAuth()).
                  body(addClientInfo).
                  post("/api-clients").
                 then().
@@ -43,11 +38,10 @@ public class CreateAccessTokenRest8 {
 
     @Test
     void TC2_create_new_accessToken_with_existing_clientEmail() throws JsonProcessingException {
-
         String addClientInfo = clientInfo.setClientInfo("AnyName", "anyName@edu.de");
 
         given().
-                spec(SetUp.getRequestSpec()).
+                spec(SetUp.getRequestSpecWithAuth()).
                 body(addClientInfo).
                 post("/api-clients").
                 then().
@@ -61,7 +55,7 @@ public class CreateAccessTokenRest8 {
         String addClientInfo = clientInfo.setClientInfo("AnyName", "anyName1");
 
         given().
-                spec(SetUp.getRequestSpec()).
+                spec(SetUp.getRequestSpecWithAuth()).
                 body(addClientInfo).
                 post("/api-clients").
                 then().
@@ -73,10 +67,10 @@ public class CreateAccessTokenRest8 {
     // TC4: Create new accessToken with missing clientName & inexisting clientEmail(email format)
     @Test
     void TC4_create_new_accessToken_without_clientName() throws JsonProcessingException {
-        String addClientInfo = clientInfo.setClientEmailJson("AnyName4@gmail.com");
+        String addClientInfo = clientInfo.setClientInfo("","AnyName4@gmail.com");
 
         given().
-                spec(SetUp.getRequestSpec()).
+                spec(SetUp.getRequestSpecWithAuth()).
                 body(addClientInfo).
                 post("/api-clients").
                 then().
@@ -87,10 +81,10 @@ public class CreateAccessTokenRest8 {
 
     @Test
     void TC5_create_new_accessToken_without_clientEmail() throws JsonProcessingException {
-        String addClientInfo = clientInfo.setClientNameJson("John");
+        String addClientInfo = clientInfo.setClientInfo("John","");
 
         given().
-                spec(SetUp.getRequestSpec()).
+                spec(SetUp.getRequestSpecWithAuth()).
                 body(addClientInfo).
                 post("/api-clients").
                 then().
@@ -104,7 +98,7 @@ public class CreateAccessTokenRest8 {
         String addClientInfo = clientInfo.setClientInfo("", "anyName22@edu.de");
 
         given().
-                spec(SetUp.getRequestSpec()).
+                spec(SetUp.getRequestSpecWithAuth()).
                 body(addClientInfo).
                 post("/api-clients").
                 then().
@@ -114,19 +108,8 @@ public class CreateAccessTokenRest8 {
     }
 
 
-
     @AfterSuite
     void tearDown(){
         System.out.println("TearDown");
     }
 }
-
-
-
-
-//        ResponseBody body = response.body();
-//        String resBodyString = body.asString();
-//        JsonPath jPath = new JsonPath(resBodyString);
-//        String accessToken = jPath.getString("accessToken");
-//
-//        System.out.println("The generated accessToken is: " + accessToken);

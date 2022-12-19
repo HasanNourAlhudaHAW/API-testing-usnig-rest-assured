@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import setUp.SetUp;
 
-public class GetOrdersRest4 {
+public class GetOrders {
 
     SetUp setUp = new SetUp();
 
@@ -22,12 +22,12 @@ public class GetOrdersRest4 {
 
     @Test
     void TC1_get_all_orders(){
-        given().spec(setUp.getRequestSpec()).
+        given().spec(setUp.getRequestSpecWithAuth()).
                 get("/orders").
                 then().
                 statusCode(200).
                 log().all().
-                body("[0].id", equalTo("cCP47zVMdJqpWcYpFKeuQ"));
+                body("[0].id", equalTo("CLzmKH0AI8bYpmxuvTrc5"));
                 //body(".length", equalTo(5));
     }
 
@@ -40,18 +40,6 @@ public class GetOrdersRest4 {
                 log().all().
                 body("error", equalTo("Missing Authorization header."));
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @After

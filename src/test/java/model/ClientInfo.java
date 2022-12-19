@@ -61,6 +61,7 @@ public class ClientInfo {
         this.additionalProperties.put(name, value);
     }
 
+
     public String setClientInfo(String clientName, String clientEmail) throws JsonProcessingException {
         ClientInfo ci= new ClientInfo();
         ci.setClientName(clientName);
@@ -70,20 +71,5 @@ public class ClientInfo {
         return jsonString;
     }
 
-    public String setClientEmailJson(String clientEmail) throws JsonProcessingException {
-        ClientInfo ci= new ClientInfo();
-        ci.setClientEmail(clientEmail);
-        ObjectMapper mapper = new ObjectMapper();
-        String jsonString = mapper.writeValueAsString(ci);
-        return jsonString;
-    }
-
-    public String setClientNameJson(String clientName) throws JsonProcessingException {
-        ClientInfo ci= new ClientInfo();
-        ci.setClientName(clientName);
-        ObjectMapper mapper = new ObjectMapper();
-        String jsonString = mapper.writeValueAsString(ci);
-        return jsonString;
-    }
 
 }

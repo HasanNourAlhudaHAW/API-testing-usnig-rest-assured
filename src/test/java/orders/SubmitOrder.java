@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.equalTo;
 import setUp.SetUp;
 
 
-public class SubmitOrderRest3 {
+public class SubmitOrder {
 
     SetUp setUp = new SetUp();
     OrderInfo orderInfo = new OrderInfo();
@@ -28,7 +28,7 @@ public class SubmitOrderRest3 {
     void TC1_submit_an_order() throws JsonProcessingException {
         String addBookDetails = orderInfo.setOrderInfo("John", 4);
 
-        given().spec(SetUp.getRequestSpec())
+        given().spec(SetUp.getRequestSpecWithAuth())
                 .body(addBookDetails).
                 post("/orders").
                 then().
@@ -41,7 +41,7 @@ public class SubmitOrderRest3 {
         String addBookDetails = orderInfo.setOrderInfo("", 6);
 
         given().
-                spec(SetUp.getRequestSpec())
+                spec(SetUp.getRequestSpecWithAuth())
                 .body(addBookDetails).
                 post("/orders").
                 then().
@@ -53,7 +53,7 @@ public class SubmitOrderRest3 {
     void TC3_submit_an_order_when_bookId_invalid_and_customerName_null()throws JsonProcessingException {
         String addBookDetails = orderInfo.setOrderInfo("", 7);
 
-        given().spec(SetUp.getRequestSpec())
+        given().spec(SetUp.getRequestSpecWithAuth())
                 .body(addBookDetails).
                 post("/orders").
                 then().
@@ -66,7 +66,7 @@ public class SubmitOrderRest3 {
     void TC4_submit_an_order_when_book_not_available()throws JsonProcessingException {
         String addBookDetails = orderInfo.setOrderInfo("John", 2);
 
-        given().spec(SetUp.getRequestSpec())
+        given().spec(SetUp.getRequestSpecWithAuth())
                 .body(addBookDetails).
                 post("/orders").
                 then().

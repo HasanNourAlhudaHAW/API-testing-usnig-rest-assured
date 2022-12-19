@@ -8,7 +8,8 @@ import setUp.SetUp;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class GetSingleBookRest2 {
+
+public class GetSingleBook {
 
     SetUp setUp = new SetUp();
 
@@ -17,11 +18,11 @@ public class GetSingleBookRest2 {
         System.out.println("SetUp");
     }
 
-
+    //Retrieve detailed information about a book.
     @Test
     void TC1_get_book_when_bookId_equalTo_1(){
             given()
-                .spec(setUp.getRequestSpec())
+                .spec(setUp.getRequestSpecWithAuth())
                 .pathParam("bookid","1").
                 get("/books/{bookid}").
                 then().statusCode(200).
@@ -32,7 +33,7 @@ public class GetSingleBookRest2 {
     @Test
     void TC2_get_book_when_bookId_equalTo_6(){
         given()
-                .spec(setUp.getRequestSpec())
+                .spec(setUp.getRequestSpecWithAuth())
                 .pathParam("bookid","6").
                 get("/books/{bookid}").
                 then().statusCode(200).
@@ -43,7 +44,7 @@ public class GetSingleBookRest2 {
     @Test
     void TC3_get_book_when_bookId_equalTo_0(){
         given()
-                .spec(setUp.getRequestSpec())
+                .spec(setUp.getRequestSpecWithAuth())
                 .pathParam("bookid","0").
                 get("/books/{bookid}").
                 then().statusCode(404).
@@ -54,7 +55,7 @@ public class GetSingleBookRest2 {
     @Test
     void TC4_get_book_when_bookId_equalTo_7(){
         given()
-                .spec(setUp.getRequestSpec())
+                .spec(setUp.getRequestSpecWithAuth())
                 .pathParam("bookid","7").
                 get("/books/{bookid}").
                 then().statusCode(404).
@@ -65,7 +66,7 @@ public class GetSingleBookRest2 {
     @Test
     void TC5_get_book_when_bookId_equalTo_null(){
         given()
-                .spec(setUp.getRequestSpec())
+                .spec(setUp.getRequestSpecWithAuth())
                 .pathParam("bookid","Nan").
                 get("/books/{bookid}").
                 then().statusCode(404).

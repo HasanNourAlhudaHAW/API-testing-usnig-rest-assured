@@ -6,20 +6,20 @@
     <groups>
     </groups>
     <test started-at="2022-11-25T10:50:29 MEZ" name="API-Testing_Rest-Assured" finished-at="2022-11-25T10:50:31 MEZ" duration-ms="2198">
-      <class name="books.GetBooksRest1">
-        <test-method is-config="true" signature="setUo()[pri:0, instance:books.GetBooksRest1@161b062a]" started-at="2022-11-25T10:50:29 MEZ" name="setUo" finished-at="2022-11-25T10:50:29 MEZ" duration-ms="12" status="PASS">
+      <class name="books.GetBooks">
+        <test-method is-config="true" signature="setUo()[pri:0, instance:books.GetBooks@161b062a]" started-at="2022-11-25T10:50:29 MEZ" name="setUo" finished-at="2022-11-25T10:50:29 MEZ" duration-ms="12" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUo -->
-        <test-method signature="get_User()[pri:0, instance:books.GetBooksRest1@161b062a]" started-at="2022-11-25T10:50:29 MEZ" name="get_User" finished-at="2022-11-25T10:50:31 MEZ" duration-ms="2168" status="PASS">
+        <test-method signature="get_User()[pri:0, instance:books.GetBooks@161b062a]" started-at="2022-11-25T10:50:29 MEZ" name="get_User" finished-at="2022-11-25T10:50:31 MEZ" duration-ms="2168" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- get_User -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:books.GetBooksRest1@161b062a]" started-at="2022-11-25T10:50:31 MEZ" name="tearDown" finished-at="2022-11-25T10:50:31 MEZ" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:books.GetBooks@161b062a]" started-at="2022-11-25T10:50:31 MEZ" name="tearDown" finished-at="2022-11-25T10:50:31 MEZ" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- books.GetBooksRest1 -->
+      </class> <!-- books.GetBooks -->
     </test> <!-- API-Testing_Rest-Assured -->
   </suite> <!-- Default Suite -->
 </testng-results>

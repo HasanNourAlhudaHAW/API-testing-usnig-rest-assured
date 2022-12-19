@@ -8,7 +8,7 @@ import setUp.SetUp;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.equalTo;
 
-public class UpdateOrderRest6 {
+public class UpdateOrder {
 
     SetUp setUp = new SetUp();
     OrderInfo orderInfo = new OrderInfo();
@@ -24,8 +24,8 @@ public class UpdateOrderRest6 {
         String customerName = orderInfo.updateOrderCustomerName("Mustermann4");
 
         given()
-                .spec(setUp.getRequestSpec())
-                .pathParam("orderId","cCP47zVMdJqpWcYpFKeuQ").
+                .spec(setUp.getRequestSpecWithAuth())
+                .pathParam("orderId","hFsaZU2nEF1o4klv3tcvj").
                 body(customerName).
                 patch("/orders/{orderId}").
                 then().statusCode(204).
@@ -36,11 +36,11 @@ public class UpdateOrderRest6 {
     void TC2_update_existing_order_with_authentication_and_empty_body(){
 
         given()
-                .spec(setUp.getRequestSpec())
-                .pathParam("orderId","cCP47zVMdJqpWcYpFKeuQ").
+                .spec(setUp.getRequestSpecWithAuth())
+                .pathParam("orderId","hFsaZU2nEF1o4klv3tcvj").
                 body("").
                 patch("/orders/{orderId}").
-                then().statusCode(204).
+                then().statusCode(404).
                 log().all();
     }
 
@@ -49,7 +49,7 @@ public class UpdateOrderRest6 {
         String customerName = orderInfo.updateOrderCustomerName("AnyName");
 
         given()
-                .spec(setUp.getRequestSpec())
+                .spec(setUp.getRequestSpecWithAuth())
                 .pathParam("orderId","cCP47zVMdJqpWcYpFKeu").
                 body(customerName).
                 patch("/orders/{orderId}").

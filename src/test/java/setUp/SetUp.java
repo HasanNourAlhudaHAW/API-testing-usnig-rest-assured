@@ -6,7 +6,6 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import model.ClientInfo;
-import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
@@ -20,8 +19,8 @@ public class SetUp {
         setUp.generateNewToken();
     }
 
-    public static RequestSpecification getRequestSpec() {
-        String token = "6b9a9ee39722beb9c2441dd5dc68ce32a8975661ab6edf1b56bbe1fcd2bffdda";
+    public static RequestSpecification getRequestSpecWithAuth() {
+        String token = "cacb9805661405efff18acd8df6350671884f6e7d0724ac44584b6b756db3974";
         RequestSpecBuilder builder = new RequestSpecBuilder();
         builder.setBaseUri ("https://simple-books-api.glitch.me");
         builder.addHeader("Authorization", "Bearer " + token);
@@ -53,33 +52,33 @@ public class SetUp {
     }
 
 
-    String generateNewTokenTest(String clientName, String clientEmail){
-
-        RequestSpecification request = given().spec(this.getRequestSpec());
-        String payload = "{\n" +
-                "   \"clientName\": \"clientName\",\n" +
-                "   \"clientEmail\": \"clientEmail\"\n" +
-                "}";
-        request.header("Content-Type", "application/json");
-        Response responseFromTokenGenerator = request.body(payload).post("/api-clients/");
-        String jsonString = responseFromTokenGenerator.getBody().asString();
-        final String token = JsonPath.from(jsonString).get("accessToken");
-        return  token;
-    }
-
-
-    public RequestSpecification getRequestSpecTest(String clientName, String clientEmail) {
-
-        String token =  this.generateNewTokenTest(clientName, clientEmail);
-        System.out.println("My new Token is: " + token);
-        RequestSpecBuilder builder = new RequestSpecBuilder();
-        builder.setBaseUri ("https://simple-books-api.glitch.me");
-        builder.addHeader("Authorization", "Bearer " + token);
-        builder.addHeader("Content-Type", "application/json");
-
-        RequestSpecification requestSpec = builder.build();
-        return requestSpec;
-    }
+//    String generateNewTokenTest(String clientName, String clientEmail){
+//
+//        RequestSpecification request = given().spec(this.getRequestSpec());
+//        String payload = "{\n" +
+//                "   \"clientName\": \"clientName\",\n" +
+//                "   \"clientEmail\": \"clientEmail\"\n" +
+//                "}";
+//        request.header("Content-Type", "application/json");
+//        Response responseFromTokenGenerator = request.body(payload).post("/api-clients/");
+//        String jsonString = responseFromTokenGenerator.getBody().asString();
+//        final String token = JsonPath.from(jsonString).get("accessToken");
+//        return  token;
+//    }
+//
+//
+//    public RequestSpecification getRequestSpecTest(String clientName, String clientEmail) {
+//
+//        String token =  this.generateNewTokenTest(clientName, clientEmail);
+//        System.out.println("My new Token is: " + token);
+//        RequestSpecBuilder builder = new RequestSpecBuilder();
+//        builder.setBaseUri ("https://simple-books-api.glitch.me");
+//        builder.addHeader("Authorization", "Bearer " + token);
+//        builder.addHeader("Content-Type", "application/json");
+//
+//        RequestSpecification requestSpec = builder.build();
+//        return requestSpec;
+//    }
 
 
 }
