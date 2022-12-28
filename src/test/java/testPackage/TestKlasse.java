@@ -11,6 +11,7 @@ public class TestKlasse {
             System.out.println("Du hast maskhara eingegeben");
         }else{
             result = result - param;
+            System.out.println("Congs that works");
         }
 
         System.out.println(result);
