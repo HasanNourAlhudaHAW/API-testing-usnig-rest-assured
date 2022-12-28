@@ -33,7 +33,6 @@ public class CreateAccessToken {
                 then().
                 statusCode(201).
                 log().all();
-
     }
 
     @Test

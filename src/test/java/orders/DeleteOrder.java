@@ -25,9 +25,20 @@ public class DeleteOrder {
 
         given()
                 .spec(setUp.getRequestSpecWithAuth())
-                .pathParam("orderId","MJ7EqMSBeQnm82zEsEl2u").
+                .pathParam("orderId","8p9eQwF9LhaPeYGHIYxjw").
                 delete("/orders/{orderId}").
                 then().statusCode(204).
+                log().all();
+    }
+
+    @Test
+    void TC1_delete_inexisting_order_with_authentication(){
+
+        given()
+                .spec(setUp.getRequestSpecWithAuth())
+                .pathParam("orderId","8p9eQwF9LhaPeYGHIYxjws").
+                delete("/orders/{orderId}").
+                then().statusCode(404).
                 log().all();
     }
 

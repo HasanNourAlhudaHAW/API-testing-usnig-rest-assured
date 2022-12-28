@@ -17,7 +17,6 @@ public class SubmitOrder {
     SetUp setUp = new SetUp();
     OrderInfo orderInfo = new OrderInfo();
 
-    private static RequestSpecification spec;
 
     @Before
     void setUp() {
