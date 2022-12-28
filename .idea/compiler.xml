@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="API-Testing_Rest-Assured" />
         <module name="API-testing-unsing-rest-assured" />
+        <module name="API-testing-usnig-rest-assured" />
       </profile>
     </annotationProcessing>
   </component>
