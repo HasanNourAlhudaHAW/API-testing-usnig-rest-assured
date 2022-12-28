@@ -2,18 +2,8 @@ package testPackage;
 
 public class TestKlasse {
 
-    void testConflict(int number1, int number2, int param){
-        int i = number1;
-        int y= number2;
-        int result = i+y;
-
-        if(param <= 0){
-            System.out.println("Du hast maskhara eingegeben");
-        }else{
-            result = result - param;
-            System.out.println("Congs that works");
-        }
-
-        System.out.println(result);
+    int testConflict(int number1, int number2, int param){
+        int sum = number1 + number2;
+        return  sum - param;
     }
 }
